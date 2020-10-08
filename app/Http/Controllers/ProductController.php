@@ -9,16 +9,20 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all(); dd($products);
+        $products = Product::all();
 
-        return view('products.index');
+        return view('products.index')->with([
+            'products' => $products
+        ]);
     }
 
     public function show($product)
     {
-        $product = Product::findOrFail($product); dd($product);
-        
-        return view('products.show');
+        $product = Product::findOrFail($product);
+
+        return view('products.show')->with([
+            'product' => $product
+        ]);
     }
 
     public function create()

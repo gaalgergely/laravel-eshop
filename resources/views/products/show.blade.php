@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
+@extends('layouts.master')
 
-    <title>Laravel</title>
-</head>
-<body>
-show
-</body>
-</html>
+@section('content')
+    <h1>{{ $product->title }}</h1>
+    <p>{{ $product->description }}</p>
+@endsection
