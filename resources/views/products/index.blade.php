@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>List of products</h1>
+    <a class="btn btn-success" href="{{ route('products.create') }}">New Product</a>
     @empty ($products)
     <div class="alert alert-warning">
         The list of products is empty.
@@ -16,6 +17,7 @@
                 <th>Price</th>
                 <th>Stock</th>
                 <th>Status</th>
+                <th>Actions</th>
             </thead>
             <tbody>
                 @foreach ($products as $product)
@@ -26,6 +28,15 @@
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->status }}</td>
+                    <td>
+                        <a class="btn btn-link" href="{{ route('products.show', ['product'=>$product->id]) }}">Show</a>
+                        <a class="btn btn-link" href="{{ route('products.edit', ['product'=>$product->id]) }}">Edit</a>
+                        <form method="post" action="{{ route('products.destroy', ['product'=>$product->id]) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-link" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
