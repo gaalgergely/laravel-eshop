@@ -45,7 +45,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -76,7 +76,32 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+
+            <div class="container-fluid">
+
+                @if(isset($errors) && $errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                {{ session()->get('success') }}
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @yield('content')
+
+            </div>
         </main>
     </div>
 </body>

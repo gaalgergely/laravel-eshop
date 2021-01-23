@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
     <h1>Edit product</h1>
@@ -30,7 +30,7 @@
             </select>
         </div>
         <div class="form-row">
-            <button type="submit" class="btn btn-primary btn-lg">Update Product</button>
+            <button type="submit" class="btn btn-primary btn-lg mt-3">Update Product</button>
         </div>
     </form>
 @endsection

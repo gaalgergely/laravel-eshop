@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
     <h1>List of products</h1>
-    <a class="btn btn-success" href="{{ route('products.create') }}">New Product</a>
+    <a class="btn btn-success mb-3" href="{{ route('products.create') }}">New Product</a>
     @empty ($products)
     <div class="alert alert-warning">
         The list of products is empty.
@@ -31,7 +31,7 @@
                     <td>
                         <a class="btn btn-link" href="{{ route('products.show', ['product'=>$product->id]) }}">Show</a>
                         <a class="btn btn-link" href="{{ route('products.edit', ['product'=>$product->id]) }}">Edit</a>
-                        <form method="post" action="{{ route('products.destroy', ['product'=>$product->id]) }}">
+                        <form class="d-inline" method="post" action="{{ route('products.destroy', ['product'=>$product->id]) }}">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-link" type="submit">Delete</button>
