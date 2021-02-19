@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -91,11 +91,7 @@
 
                 @if(session()->has('success'))
                     <div class="alert alert-success">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                {{ session()->get('success') }}
-                            @endforeach
-                        </ul>
+                        {{ session()->get('success') }}
                     </div>
                 @endif
 

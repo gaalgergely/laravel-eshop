@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -21,10 +22,8 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show($product)
+    public function show(Product $product)
     {
-        $product = Product::findOrFail($product);
-
         return view('products.show')->with([
             'product' => $product
         ]);
@@ -35,11 +34,13 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $product = Product::create(request()->all());
+        $product = Product::create($request->validated());
 
-        return $product;
+        return redirect()
+            ->route('products.index')
+            ->withSuccess("The product with id {$product->id} was created.");
     }
 
     public function edit(Product $product)
@@ -49,17 +50,21 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $product->update($request->all());
+        $product->update($request->validated());
 
-        return $product;
+        return redirect()
+            ->route('products.index')
+            ->withSuccess("The product with id {$product->id} was updated.");
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return $product;
+        return redirect()
+            ->route('products.index')
+            ->withSuccess("The product with id {$product->id} was removed.");
     }
 }

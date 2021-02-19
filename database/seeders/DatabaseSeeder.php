@@ -15,5 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(10)->create();
         \App\Models\Product::factory(15)->create();
+
+        \App\Models\User::create([
+            'name' => 'John Doe',
+            'email' => 'test@email.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('password')
+        ]);
     }
 }
