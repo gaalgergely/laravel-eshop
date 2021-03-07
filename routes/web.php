@@ -17,6 +17,10 @@ Route::get('/', 'MainController@index')->name('main');
 
 Route::resource('products', ProductController::class);
 
+Route::resource('carts', CartController::class)->only(['index']);
+
+Route::resource('products.carts', ProductCartController::class)->only(['store' , 'destroy']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -33,7 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                        </li>
+                        @inject('cartService', 'App\Services\CartService')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('carts.index') }}">Cart ({{ $cartService->countProducts() }})</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
