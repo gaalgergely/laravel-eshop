@@ -28,4 +28,15 @@ class Order extends Model
     {
         return $this->morphToMany(Product::class, 'productable')->withPivot('quantity');
     }
+
+    /**
+     * @return mixed
+     *
+     * @note can be organized in a trait
+     * @see Cart model same method ...
+     */
+    public function getTotalAttribute()
+    {
+        return $this->products->pluck('total')->sum();
+    }
 }
