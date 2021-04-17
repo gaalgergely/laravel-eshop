@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('main');
 
-Route::resource('products', ProductController::class);
-
 Route::resource('carts', CartController::class)->only(['index']);
 
 Route::resource('orders', OrderController::class)->only(['create', 'store']);

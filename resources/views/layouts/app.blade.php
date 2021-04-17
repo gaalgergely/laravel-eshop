@@ -34,7 +34,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                            @if(optional(auth()->user())->isAdmin())
+                                <a class="nav-link" href="{{ route('panel') }}">Panel</a>
+                            @endif
                         </li>
                         @inject('cartService', 'App\Services\CartService')
                         <li class="nav-item">
