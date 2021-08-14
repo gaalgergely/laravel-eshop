@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('main');
 
+Route::get('profile', 'ProfileController@edit')->name('profile.edit');
+Route::put('profile', 'ProfileController@update')->name('profile.update');
+
 Route::resource('carts', CartController::class)->only(['index']);
 
 Route::resource('orders', OrderController::class)
