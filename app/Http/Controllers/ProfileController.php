@@ -33,7 +33,7 @@ class ProfileController extends Controller
         }
 
         $user->save();
-        
+
         if ($request->hasFile('image')) {
 
             if ($user->image != null) {
