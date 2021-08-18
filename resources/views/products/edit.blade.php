@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Edit product</h1>
-    <form method="post" action="{{ route('products.update', ['product' => $product->id]) }}">
+    <form method="post" action="{{ route('products.update', ['product' => $product->id]) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-row">
@@ -28,6 +28,14 @@
                 <option value="available" {{ $product->status==='available' ? 'selected' : '' }}>Available</option>
                 <option value="unavailable" {{ $product->status==='available' ? 'selected' : '' }}>Unavailable</option>
             </select>
+        </div>
+        <div class="form-row">
+            <label>{{ __('Images') }}</label>
+
+            <div class="custom-file">
+                <input type="file" name="images[]" accept="image/*" class="custom-file-input" multiple>
+                <label for="" class="custom-file-label">Product Images ...</label>
+            </div>
         </div>
         <div class="form-row">
             <button type="submit" class="btn btn-primary btn-lg mt-3">Update Product</button>
