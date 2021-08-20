@@ -10,6 +10,7 @@
                     <div class="card-body">
                         <div class="list-group">
                             <a href="{{ route('products.index') }}" class="list-group-item">Manage Products</a>
+                            <a href="{{ route('users.index') }}" class="list-group-item">Manage Users</a>
                         </div>
                     </div>
                 </div>
