@@ -41,6 +41,8 @@ class ProductCartController extends Controller
             $product->id => ['quantity' => $quantity + 1]
         ]);
 
+        $cart->touch();
+
         $cookie = $this->cartService->makeCookie($cart);
 
         return redirect()->back()->cookie($cookie);
@@ -56,6 +58,8 @@ class ProductCartController extends Controller
     public function destroy(Product $product, Cart $cart)
     {
         $cart->products()->detach($product->id);
+
+        $cart->touch();
 
         $cookie = $this->cartService->makeCookie($cart);
 
